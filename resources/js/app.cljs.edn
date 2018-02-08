@@ -1,0 +1,3 @@
+{:require  [plus_days.app]
+ :init-fns [plus_days.app/init]
+ :compiler-options {:asset-path "js/app.out"}}
