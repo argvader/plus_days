@@ -1,18 +1,16 @@
 (ns plus_days.app
-  (:require [reagent.core :as reagent :refer [atom]]))
+  (:require [reagent.core :as reagent :refer [atom]]
+            [plus_days.epoch.component :as epoch]
+            [plus_days.tasks.component :as tasks]
+            [plus_days.calendar.component :as calendar]))
 
-(defn some-component []
+
+(defn plus-days []
   [:div
-   [:h3 "I am a component!"]
-   [:p.someclass
-    "I have " [:strong "bold"]
-    [:span {:style {:color "red"}} " and red"]
-    " text."]])
-
-(defn calling-component []
-  [:div "Parent component"
-   [some-component]])
+   [epoch/component]
+   [tasks/component]
+   [calendar/component]])
 
 (defn init []
-  (reagent/render-component [calling-component]
-                            (.getElementById js/document "container")))
+  (reagent/render-component [plus-days]
+                            (.getElementById js/document "application")))
