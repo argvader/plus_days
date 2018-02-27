@@ -1,10 +1,12 @@
 (ns plus_days.styles
   (:require [garden.def :refer [defrule defstyles]]
-            [garden.stylesheet :refer [rule]]))
+            [garden.stylesheet :refer [rule]]
+            [plus_days.typography :as typography]))
+
+(defrule body)
 
 (defstyles screen
-  (let [body (rule :body)]
+    typography/styles
     (body
-     {:font-family "Helvetica Neue"
-      :font-size   "16px"
-      :line-height 1.5})))
+     {:font-size   "16px"
+      :line-height 1.5}))
