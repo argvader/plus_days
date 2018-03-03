@@ -23,12 +23,9 @@
    [:header (font serif 4 700 0.3 1.2 "small-caps")]
    [:footer (font sans 1 100 0.3 1.2)]])
 
-(def alegreya ["Alegreya" "Baskerville" "Georgia" "Times" "serif"])
-(def sans ["\"Open Sans\"" "Avenir" "Helvetica" "sans-serif"])
+(def lato ["Lato" "Avenir" "Georgia" "Times" "serif"])
+(def sans ["Lato" "Avenir" "Helvetica" "sans-serif"])
 (def mono ["Inconsolata" "Menlo" "Courier" "monospace"])
 
 (defstyles fonts
-  (typeset alegreya sans mono))
-
-(defn styles []
-  (fonts))
+  (typeset lato sans mono))

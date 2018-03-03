@@ -1,30 +1,39 @@
 (set-env!
  :source-paths    #{"src/cljs" "src/clj"}
  :resource-paths  #{"resources"}
- :dependencies '[[adzerk/boot-cljs          "2.0.0"       :scope "test"]
-                 [adzerk/boot-cljs-repl     "0.3.3"       :scope "test"]
-                 [adzerk/boot-reload        "0.5.1"       :scope "test"]
-                 [pandeiro/boot-http        "0.8.3"       :scope "test"]
-                 [com.cemerick/piggieback   "0.2.1"       :scope "test"]
-                 [org.clojure/tools.nrepl   "0.2.13"      :scope "test"]
-                 [weasel                    "0.7.0"       :scope "test"]
-                 [crisptrutski/boot-cljs-test "0.3.0"     :scope "test"]
-                 [org.martinklepsch/boot-garden "1.3.2-0" :scope "test"]
-                 [powerlaces/boot-cljs-devtools "0.2.0"   :scope "test"]
-                 [org.clojure/clojurescript "1.9.562"]
-                 [reagent "0.7.0"]
-                 [re-frame "0.10.5"]
-                 [cljs-css-modules "0.2.1"]
-                 [binaryage/dirac "1.2.9" :scope "test"]])
+ :dependencies '[[boot/core                     "2.7.2"       :scope "provided"]
+                 [adzerk/boot-cljs              "2.0.0"       :scope "test"]
+                 [adzerk/boot-cljs-repl         "0.3.3"       :scope "test"]
+                 [adzerk/boot-reload            "0.5.1"       :scope "test"]
+                 [pandeiro/boot-http            "0.8.3"       :scope "test"]
+                 [com.cemerick/piggieback       "0.2.1"       :scope "test"]
+                 [org.clojure/tools.nrepl       "0.2.13"      :scope "test"]
+                 [weasel                        "0.7.0"       :scope "test"]
+                 [crisptrutski/boot-cljs-test   "0.3.0"       :scope "test"]
+                 [org.martinklepsch/boot-garden "1.3.2-0"     :scope "test"]
+                 [powerlaces/boot-cljs-devtools "0.2.0"       :scope "test"]
+                 [tolitius/boot-check           "0.1.9"       :scope "test"]
+                 [binaryage/dirac               "1.2.9"       :scope "test"]
+                 [org.clojure/clojurescript     "1.9.562"]
+                 [reagent                       "0.7.0"]
+                 [re-frame                      "0.10.5"]
+                 [cljs-css-modules              "0.2.1"]])
 
 (require
- '[adzerk.boot-cljs      :refer [cljs]]
- '[adzerk.boot-cljs-repl :refer [cljs-repl start-repl]]
- '[adzerk.boot-reload    :refer [reload]]
- '[pandeiro.boot-http    :refer [serve]]
- '[crisptrutski.boot-cljs-test :refer [test-cljs]]
+ '[adzerk.boot-cljs              :refer [cljs]]
+ '[adzerk.boot-cljs-repl         :refer [cljs-repl start-repl]]
+ '[adzerk.boot-reload            :refer [reload]]
+ '[pandeiro.boot-http            :refer [serve]]
+ '[crisptrutski.boot-cljs-test   :refer [test-cljs]]
  '[org.martinklepsch.boot-garden :refer [garden]]
- '[powerlaces.boot-cljs-devtools :refer [cljs-devtools dirac]])
+ '[powerlaces.boot-cljs-devtools :refer [cljs-devtools dirac]]
+ '[tolitius.boot-check           :as check]
+ '[tolitius.reporter.html])
+
+(deftask check-sources []
+  (set-env! :source-paths #{"src/cljs" "src/clj"})
+  (comp
+    (check/with-kibit)))
 
 (deftask build
   "This task contains all the necessary steps to produce a build

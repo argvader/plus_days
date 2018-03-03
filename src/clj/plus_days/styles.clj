@@ -6,7 +6,7 @@
 (defrule body)
 
 (defstyles screen
-    typography/styles
+    typography/fonts
     (body
      {:font-size   "16px"
       :line-height 1.5}))
