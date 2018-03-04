@@ -4,4 +4,4 @@
 (defstyle style
   [".container"
     {:background-color "blue"
-     :height "200px"}])
+     :grid-area "calendar"}])

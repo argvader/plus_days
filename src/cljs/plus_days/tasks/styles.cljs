@@ -4,4 +4,4 @@
 (defstyle style
   [".container"
     {:background-color "cyan"
-     :height "200px"}])
+     :grid-area "tasks"}])

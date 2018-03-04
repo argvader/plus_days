@@ -6,7 +6,7 @@
 
 
 (defn plus-days []
-  [:div
+  [:div {:class-name "grid"}
    [epoch/component]
    [tasks/component]
    [calendar/component]])

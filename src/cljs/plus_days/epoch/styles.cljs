@@ -4,4 +4,4 @@
 (defstyle style
   [".container"
     {:background-color "yellow"
-     :height "200px"}])
+     :grid-area "epoch"}])
