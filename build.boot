@@ -17,6 +17,7 @@
                  [org.clojure/clojurescript     "1.9.562"]
                  [reagent                       "0.7.0"]
                  [re-frame                      "0.10.5"]
+                 [com.degel/re-frame-firebase   "0.5.0"]
                  [cljs-css-modules              "0.2.1"]])
 
 (require
