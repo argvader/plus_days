@@ -63,7 +63,7 @@
 
 (re-frame/reg-event-fx
  :sign-in
- (fn [_ _] {:firebase/google-sign-in nil}))
+ (fn [_ _] {:firebase/google-sign-in {:sign-in-method :popup}}))
 
 (re-frame/reg-event-fx
  :sign-out
@@ -74,11 +74,14 @@
  (fn [_ [_ error]]
    (js/console.error (str "FIREBASE ERROR:\n" error))))
 
+(defn authenticate []
+  (re-frame/dispatch-sync [:sign-in]))
 
 (defn logged-in? [db]
   (some? (get-in db [::user :uid])))
 
 (defn ^:export init []
+  (js/console.log "init")
   (firebase/init :firebase-app-info      firebase-app-info
                  :get-user-sub           [::user]
                  :set-user-event         [::set-user]

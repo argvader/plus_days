@@ -1,20 +1,20 @@
 (set-env!
  :source-paths    #{"src/cljs" "src/clj"}
  :resource-paths  #{"resources"}
- :dependencies '[[boot/core                     "2.7.2"       :scope "provided"]
-                 [adzerk/boot-cljs              "2.0.0"       :scope "test"]
-                 [adzerk/boot-cljs-repl         "0.3.3"       :scope "test"]
-                 [adzerk/boot-reload            "0.5.1"       :scope "test"]
-                 [pandeiro/boot-http            "0.8.3"       :scope "test"]
-                 [com.cemerick/piggieback       "0.2.1"       :scope "test"]
-                 [org.clojure/tools.nrepl       "0.2.13"      :scope "test"]
-                 [weasel                        "0.7.0"       :scope "test"]
-                 [crisptrutski/boot-cljs-test   "0.3.0"       :scope "test"]
-                 [org.martinklepsch/boot-garden "1.3.2-0"     :scope "test"]
-                 [powerlaces/boot-cljs-devtools "0.2.0"       :scope "test"]
-                 [tolitius/boot-check           "0.1.9"       :scope "test"]
-                 [binaryage/dirac               "1.2.9"       :scope "test"]
-                 [org.clojure/clojurescript     "1.9.562"]
+ :dependencies '[[boot/core                     "2.7.2"           :scope "provided"]
+                 [adzerk/boot-cljs              "2.1.4"           :scope "test"]
+                 [adzerk/boot-cljs-repl         "0.4.0-SNAPSHOT"  :scope "test"]
+                 [adzerk/boot-reload            "0.5.2"           :scope "test"]
+                 [pandeiro/boot-http            "0.8.3"           :scope "test"]
+                 [com.cemerick/piggieback       "0.2.2"           :scope "test"]
+                 [org.clojure/tools.nrepl       "0.2.13"          :scope "test"]
+                 [weasel                        "0.7.0"           :scope "test"]
+                 [crisptrutski/boot-cljs-test   "0.3.0"           :scope "test"]
+                 [org.martinklepsch/boot-garden "1.3.2-0"         :scope "test"]
+                 [powerlaces/boot-cljs-devtools "0.2.0"           :scope "test"]
+                 [tolitius/boot-check           "0.1.9"           :scope "test"]
+                 [binaryage/dirac               "1.2.9"           :scope "test"]
+                 [org.clojure/clojurescript     "1.10.238"]
                  [reagent                       "0.7.0"]
                  [re-frame                      "0.10.5"]
                  [com.degel/iron "0.2.0"]
@@ -65,6 +65,7 @@
 
 (deftask development []
   (task-options! cljs {:optimizations :none}
+                 cljs-repl {:nrepl-opts {:middleware ['cemerick.piggieback/wrap-cljs-repl]}}
                  reload {:on-jsload 'plus_days.app/init})
   identity)
 
