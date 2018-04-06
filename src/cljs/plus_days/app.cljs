@@ -21,5 +21,4 @@
 
 (defn init []
   (fb/init)
-  (fb/authenticate)
   (mount-root))
