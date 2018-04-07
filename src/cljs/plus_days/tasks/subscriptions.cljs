@@ -5,4 +5,4 @@
 (reg-sub-raw
   :tasks
   (fn [db]
-    (core/firebase-on-value-sub db [1 {:path [:test]}])))
+    (core/firebase-on-value-sub db [1 {:path [:tasks]}])))

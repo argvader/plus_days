@@ -3,8 +3,11 @@
 
 (reg-event-fx
   :new-task
-  (fn [{db :db} [_ task]]
-    {:firebase/write {:path [:test]
-                      :value task
-                      :on-success #(js/console.log "Wrote status")
-                      :on-failure [:handle-failure]}}))
+  (fn [{db :db} [_ name duration]]
+    (let [task {:id (str (random-uuid))
+                :name name
+                :duration duration}]
+      {:firebase/push {:path [:tasks]
+                        :value task
+                        :on-success #(js/console.log "Added Task")
+                        :on-failure [:handle-failure]}})))
