@@ -19,7 +19,7 @@
       [:* {:box-sizing "border-box"}])
     (body
       {:height "100%"
-       :background palette/base-orange-dark-21
+       :background palette/hero-blue
        :font-size   "16px"
        :line-height 1.5})
     (application

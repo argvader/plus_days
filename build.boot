@@ -1,5 +1,5 @@
 (set-env!
- :source-paths    #{"src/cljs" "src/clj"}
+ :source-paths    #{"src/cljs" "src/clj", "src/cljc"}
  :resource-paths  #{"resources"}
  :dependencies '[[boot/core                     "2.7.2"           :scope "provided"]
                  [adzerk/boot-cljs              "2.1.4"           :scope "test"]
@@ -17,8 +17,10 @@
                  [org.clojure/clojurescript     "1.10.238"]
                  [reagent                       "0.7.0"]
                  [re-frame                      "0.10.5"]
-                 [com.degel/iron "0.2.0"]
+                 [com.degel/iron                "0.2.0"]
                  [com.degel/re-frame-firebase   "0.5.0"]
+                 [com.andrewmcveigh/cljs-time   "0.5.2"]
+                 [rid3                          "0.2.1"]
                  [cljs-css-modules              "0.2.1"]])
 
 (require
