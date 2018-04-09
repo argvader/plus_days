@@ -14,7 +14,7 @@
   (let [name (r/atom "")
         duration (r/atom 60)
         click-fn (fn []
-                    (dispatch [:new-task @name @duration])
+                    (dispatch [:plus_days.tasks.events/new @name @duration])
                     (reset! duration 60)
                     (reset! name ""))]
     (fn []
@@ -28,7 +28,7 @@
         [:button {:on-click #(click-fn)} "Add Task"]])))
 
 (defn component[]
-  (let [tasks (subscribe [:tasks])]
+  (let [tasks (subscribe [:plus_days.tasks.subscriptions/fetch])]
     (fn []
       [:div {:class-name (:container style)}
         (map #(render-task (val %)) @tasks)

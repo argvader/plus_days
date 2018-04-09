@@ -2,7 +2,7 @@
   [:require [re-frame.core :as re-frame :refer [reg-event-fx]]])
 
 (reg-event-fx
-  :new-task
+  ::new
   (fn [{db :db} [_ name duration]]
     (let [task {:id (str (random-uuid))
                 :name name

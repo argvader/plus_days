@@ -3,6 +3,6 @@
             [com.degel.re-frame-firebase.core :as core]])
 
 (reg-sub-raw
-  :tasks
+  ::fetch
   (fn [db]
     (core/firebase-on-value-sub db [1 {:path [:tasks]}])))
