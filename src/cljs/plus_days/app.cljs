@@ -17,8 +17,6 @@
   (reagent/render-component [plus-days]
                   (.getElementById js/document "application")))
 
-
-
 (defn init []
   (fb/init)
   (mount-root))

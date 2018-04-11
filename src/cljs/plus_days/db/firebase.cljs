@@ -73,7 +73,10 @@
 
 (defn ^:export init []
   (js/console.log "init")
-  (firebase/init :firebase-app-info      firebase-app-info
-                 :get-user-sub           [::user]
-                 :set-user-event         [::set-user]
-                 :default-error-handler  [:firebase-error]))
+  (let [not-initialized (zero? (.. js/window -firebase -apps -length))]
+    (js/console.log not-initialized)
+    (if not-initialized
+      (firebase/init :firebase-app-info      firebase-app-info
+                     :get-user-sub           [::user]
+                     :set-user-event         [::set-user]
+                     :default-error-handler  [:firebase-error]))))
