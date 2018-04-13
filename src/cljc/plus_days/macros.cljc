@@ -12,11 +12,3 @@
   `(defn ~name [& rules#]
      (at-media ~media-params
        [:& rules#])))
-
-(defmacro shades [base-name base-color step]
-  `(doseq [~'s (range 0 50 ~step)]
-     (if (= ~'s 0)
-       (def ~base-name ~base-color)
-       (do
-         (def ~(symbol (str (quote base-name) "-light-" 's)) (lighten ~base-color ~'s))
-         (def ~(symbol (str (quote base-name) "-dark-" 's)) (darken ~base-color ~'s))))))

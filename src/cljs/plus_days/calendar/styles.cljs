@@ -5,4 +5,8 @@
 (defstyle style
   [".container"
     {:background-color palette/dirt
-     :grid-area "calendar"}])
+     :grid-area "calendar"}
+    [:table
+      {:width "100%"
+       :border "1px solid"
+       :border-color (palette/shade palette/dirt :light 10)}]])
