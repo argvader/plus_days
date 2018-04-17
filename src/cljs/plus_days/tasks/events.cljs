@@ -8,6 +8,6 @@
                 :name name
                 :duration duration}]
       {:firebase/push {:path [:tasks]
-                        :value task
-                        :on-success #(js/console.log "Added Task")
-                        :on-failure [:handle-failure]}})))
+                       :value task
+                       :on-success #(js/console.log "Added Task")
+                       :on-failure [:handle-failure]}})))

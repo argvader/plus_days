@@ -72,9 +72,8 @@
   (some? (get-in db [::user :uid])))
 
 (defn ^:export init []
-  (js/console.log "init")
+  (js/console.log "db init")
   (let [not-initialized (zero? (.. js/window -firebase -apps -length))]
-    (js/console.log not-initialized)
     (if not-initialized
       (firebase/init :firebase-app-info      firebase-app-info
                      :get-user-sub           [::user]

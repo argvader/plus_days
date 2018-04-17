@@ -46,7 +46,9 @@
   []
   (comp (cljs)
         (garden :styles-var 'plus_days.styles/screen
-         :output-to "css/styles.css")))
+                :vendors ["webkit"]
+                :auto-prefix #{:mask}
+                :output-to "css/styles.css")))
 
 (deftask run
   "The `run` task wraps the building of your application in some
