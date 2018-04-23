@@ -3,8 +3,6 @@
             [plus_days.palette :as palette]
             [plus_days.constants :refer [css-vendors]]))
 
-
-
 (defstyle style css-vendors
   [".container"
     {:background-color palette/night-sky

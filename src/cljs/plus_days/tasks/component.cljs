@@ -2,13 +2,9 @@
   (:require [plus_days.tasks.styles :refer [style]]
             [plus_days.tasks.subscriptions]
             [plus_days.tasks.events]
+            [plus_days.tasks.task.component :as task]
             [reagent.core :as r]
             [re-frame.core :as re-frame :refer [subscribe dispatch]]))
-
-(defn render-task [{:keys [id duration name]}]
-  [:div {:key (str "tsk--" id)}
-    name
-    [:aside duration]])
 
 (defn new-task []
   (let [name (r/atom "")
@@ -31,5 +27,5 @@
   (let [tasks (subscribe [:plus_days.tasks.subscriptions/fetch])]
     (fn []
       [:div {:class-name (:container style)}
-        (map #(render-task (val %)) @tasks)
+        (map #(task/component (val %)) @tasks)
         [new-task]])))
