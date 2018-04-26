@@ -28,6 +28,13 @@
        {:key (str "dated_day_" day)
         :date (time/plus start-date (time/days day))})))
 
+(defn handle-drag [event]
+  (.preventDefault event))
+
+(defn handle-drop [event]
+  (.preventDefault event)
+  (js/console.log "id " (.getData (.-dataTransfer event) "application/x-task")))
+
 (defn render-header []
   (let [shift-month (fn [direction]
                       (reset! current-month (if (= direction :left)
@@ -51,6 +58,8 @@
            (for [day week]
              (if (contains? day :date)
                [:td {:key (:key day)
+                     :on-drag-over handle-drag
+                     :on-drop handle-drop
                      :class-name (if (today? (:date day)) "today")}
                  [:aside (time/day (:date day))]]
               [:td {:key (str (random-uuid))} ""]))])]])
