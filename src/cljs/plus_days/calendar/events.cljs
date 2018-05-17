@@ -5,11 +5,10 @@
 
 (reg-event-db
   ::shift-month
-  (fn [{db :db} [_ current-month direction]]
+  (fn [db [_ current-month direction]]
     (assoc db :current-month (if (= direction :left)
                                (time/minus current-month (time/months 1))
                                (time/plus current-month (time/months 1))))))
-
 
 (reg-event-fx
   ::completed-task

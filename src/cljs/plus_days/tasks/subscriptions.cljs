@@ -1,8 +1,10 @@
 (ns plus_days.tasks.subscriptions
-  [:require [re-frame.core :as re-frame :refer [reg-sub reg-sub-raw]]
+  [:require [re-frame.core :as re-frame :refer [reg-sub subscribe]]
             [com.degel.re-frame-firebase.core :as core]])
 
-(reg-sub-raw
+(reg-sub
   ::fetch
-  (fn [db]
-    (core/firebase-on-value-sub db [1 {:path [:tasks]}])))
+  (fn [_ _]
+    (subscribe [:firebase/on-value {:path [:tasks]}]))
+  (fn [tasks _]
+    tasks))
