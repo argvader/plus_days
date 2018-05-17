@@ -1,11 +1,13 @@
 (ns plus_days.calendar.component
   (:require [plus_days.calendar.styles :refer [style]]
+            [plus_days.calendar.events]
+            [plus_days.calendar.subscriptions]
+            [plus_days.calendar.header.component :as header]
             [cljs-time.core :as time]
-            [cljs-time.format :refer [unparse formatter]]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            [re-frame.core :as re-frame :refer [subscribe dispatch]]))
 
 (def days ["Sunday" "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday"])
-(def current-month (r/atom (time/now)))
 
 (defn today? [date]
   (let [today (time/now)]
@@ -31,21 +33,11 @@
 (defn handle-drag [event]
   (.preventDefault event))
 
-(defn handle-drop [event]
+(defn handle-drop [event date]
   (.preventDefault event)
-  (js/console.log "id " (.getData (.-dataTransfer event) "application/x-task")))
+  (let [task-id (.getData (.-dataTransfer event) "application/x-task")]
+    (dispatch [:plus_days.calendar.events/completed-task  date task-id])))
 
-(defn render-header []
-  (let [shift-month (fn [direction]
-                      (reset! current-month (if (= direction :left)
-                                              (time/minus @current-month (time/months 1))
-                                              (time/plus @current-month (time/months 1)))))]
-    [:header {:class-name (:header style)}
-       [:section {:class-name "left"
-                  :on-click #(shift-month :left)}]
-       [:section (unparse (formatter "MMMM YYYY") @current-month)]
-       [:section {:class-name "right"
-                  :on-click #(shift-month :right)}]]))
 
 (defn render-month [month]
   [:table
@@ -59,16 +51,19 @@
              (if (contains? day :date)
                [:td {:key (:key day)
                      :on-drag-over handle-drag
-                     :on-drop handle-drop
+                     :on-drop #(handle-drop % (:date day))
                      :class-name (if (today? (:date day)) "today")}
                  [:aside (time/day (:date day))]]
-              [:td {:key (str (random-uuid))} ""]))])]])
+               [:td {:key (str (random-uuid))} ""]))])]])
 
 (defn component[]
-  [:div {:class-name (:container style)}
-     (render-header)
-     (->> @current-month
-          (build-month)
-          (offset-start-day)
-          (partition 7 7 {})
-          (render-month))])
+  (let [current-month (subscribe [:plus_days.calendar.subscriptions/current-month])]
+     (js/console.log @current-month)
+     (fn []
+      [:div {:class-name (:container style)}
+         (header/component @current-month)
+         (->> @current-month
+              (build-month)
+              (offset-start-day)
+              (partition 7 7 {})
+              (render-month))])))
