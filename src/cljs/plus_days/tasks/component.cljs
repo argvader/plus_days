@@ -26,7 +26,6 @@
 (defn component[]
   (let [tasks (subscribe [:plus_days.tasks.subscriptions/fetch])]
     (fn []
-      (js/console.log "rendering fn")
       [:div {:class-name (:container style)}
         (map #(task/component (val %)) @tasks)
         [new-task]])))
