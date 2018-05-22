@@ -3,26 +3,12 @@
             [plus_days.calendar.events]
             [plus_days.calendar.subscriptions]
             [plus_days.calendar.header.component :as header]
+            [plus_days.calendar.utils :refer [today? date->key offset-start-day]]
             [cljs-time.core :as time]
-            [cljs-time.coerce :as coerce]
             [reagent.core :as r]
             [re-frame.core :as re-frame :refer [subscribe dispatch]]))
 
-(def days ["Sunday" "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday"])
-
-(defn- today? [date]
-  (let [today (time/now)]
-     (every? identity
-       [(= (time/month date) (time/month today))
-        (= (time/day date) (time/day today))
-        (= (time/year date) (time/year today))])))
-
-
-(defn- offset-start-day [days]
-  (-> (time/day-of-week (:date (first days)))
-      (mod 7)
-      (repeat {})
-      (concat days)))
+(def days-of-week ["Sunday" "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday"])
 
 (defn- build-month [date-time]
   (let [start-date (time/first-day-of-the-month- date-time)
@@ -34,13 +20,13 @@
 (defn- handle-drag [event]
   (.preventDefault event))
 
-(defn- handle-drop [event date]
+(defn- handle-drop [event date calendar-tasks]
   (.preventDefault event)
   (let [task-id (.getData (.-dataTransfer event) "application/x-task")]
-    (dispatch [:plus_days.calendar.events/completed-task  date task-id])))
+    (dispatch [:plus_days.calendar.events/completed-task  calendar-tasks date task-id])))
 
 (defn- count-completed-tasks [calendar-tasks date]
-  (let [date-key (keyword (str (coerce/to-epoch date)))]
+  (let [date-key (date->key date)]
     (if (contains? calendar-tasks date-key)
       (count (calendar-tasks date-key))
       "")))
@@ -49,7 +35,7 @@
   [:table
    [:thead
       [:tr nil
-        (map #(vector :th {:key %} %) days)]]
+        (map #(vector :th {:key %} %) days-of-week)]]
    [:tbody
       (for [week month]
          [:tr {:key (str "tr-" "week" (random-uuid)) :id (str "tr-" "week")}
@@ -57,7 +43,7 @@
              (if (contains? day :date)
                [:td {:key (:key day)
                      :on-drag-over handle-drag
-                     :on-drop #(handle-drop % (:date day))
+                     :on-drop #(handle-drop % (:date day) calendar-tasks)
                      :class-name (if (today? (:date day)) "today")}
                  [:span (count-completed-tasks calendar-tasks (:date day))]
                  [:aside (time/day (:date day))]]
