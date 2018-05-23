@@ -63,7 +63,7 @@
 (re-frame/reg-event-fx
  :firebase-error
  (fn [_ [_ error]]
-   (js/console.error (str "FIREBASE ERROR:\n" error))))
+   (js/console.log (str "FIREBASE ERROR:\n" error))))
 
 (defn authenticate []
   (re-frame/dispatch-sync [:sign-in]))
