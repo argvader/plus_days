@@ -5,4 +5,7 @@
 (defstyle style css-vendors
   [".container"
     {:background-color "green"
-     :grid-area "epoch"}])
+     :grid-area "epoch"}]
+  ["#epoch"
+    {:width "100%"
+     :height "calc(100% - 80px)"}])

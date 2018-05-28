@@ -22,7 +22,8 @@
                  [com.degel/re-frame-firebase   "0.5.0"]
                  [com.andrewmcveigh/cljs-time   "0.5.2"]
                  [rid3                          "0.2.1"]
-                 [cljs-css-modules              "0.2.1"]])
+                 [cljs-css-modules              "0.2.1"]
+                 [cljsjs/d3                     "4.12.0-0"]])
 
 (require
  '[adzerk.boot-cljs              :refer [cljs]]
