@@ -1,8 +1,8 @@
 (ns plus_days.calendar.events
-  [:require [cljs-time.core :as time]
+  (:require [cljs-time.core :as time]
             [cljs-time.coerce :as coerce]
             [plus_days.calendar.utils :refer [date->key]]
-            [re-frame.core :as re-frame :refer [reg-event-fx reg-event-db debug]]])
+            [re-frame.core :as re-frame :refer [reg-event-fx reg-event-db debug]]))
 
 (reg-event-db
   ::shift-month

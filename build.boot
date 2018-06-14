@@ -23,7 +23,8 @@
                  [com.andrewmcveigh/cljs-time   "0.5.2"]
                  [rid3                          "0.2.1"]
                  [cljs-css-modules              "0.2.1"]
-                 [cljsjs/d3                     "4.12.0-0"]])
+                 [cljsjs/d3                     "4.12.0-0"]
+                 [district0x/re-frame-window-fx "1.0.2"]])
 
 (require
  '[adzerk.boot-cljs              :refer [cljs]]

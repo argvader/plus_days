@@ -13,7 +13,8 @@
 
 (defn draw-graph [node data]
   (let [dataMax (apply max data)
-        yScale  (height-scale dataMax 100)]
+        yScale  (height-scale dataMax 100)
+        containerWidth (.select js/d3 "#epoch")]
     (-> (utils/data-join node "rect" (:bar barChart) data)
         (utils/attrs {"x" (fn [_ index]
                             (* index 25))
@@ -24,7 +25,7 @@
                       "width" 25}))))
 
 
-(defn component[height width data]
+(defn component [height width data]
   (let [!ref (atom nil)]
     (r/create-class
       {:display-name "epoch"

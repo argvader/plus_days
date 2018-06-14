@@ -1,5 +1,5 @@
 (ns plus_days.tasks.events
-  [:require [re-frame.core :as re-frame :refer [reg-event-fx debug]]])
+  (:require [re-frame.core :as re-frame :refer [reg-event-fx debug]]))
 
 (reg-event-fx
   ::new
