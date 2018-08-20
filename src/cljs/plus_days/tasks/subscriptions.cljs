@@ -1,4 +1,4 @@
-(ns plus_days.tasks.subscriptions
+(ns plus-days.tasks.subscriptions
   (:require [re-frame.core :as re-frame :refer [reg-sub subscribe]]
             [com.degel.re-frame-firebase.core :as core]))
 

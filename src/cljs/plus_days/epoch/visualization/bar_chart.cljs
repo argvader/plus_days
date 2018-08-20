@@ -1,6 +1,6 @@
-(ns plus_days.epoch.visualization.bar-chart
-  (:require [plus_days.epoch.visualization.utils :as utils]
-            [plus_days.epoch.visualization.styles :refer [barChart]]
+(ns plus-days.epoch.visualization.bar-chart
+  (:require [plus-days.epoch.visualization.utils :as utils]
+            [plus-days.epoch.visualization.styles :refer [barChart]]
             [clojure.string :as str]
             [reagent.core :as r]
             [cljsjs.d3]))

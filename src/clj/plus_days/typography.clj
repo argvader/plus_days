@@ -1,4 +1,4 @@
-(ns plus_days.typography
+(ns plus-days.typography
   (:refer-clojure :exclude [rem])
   (:require [garden.units :as units :refer (px pt pc em rem vw)]
             [garden.stylesheet :refer [at-font-face]]

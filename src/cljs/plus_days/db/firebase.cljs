@@ -1,10 +1,10 @@
-(ns plus_days.db.firebase
+(ns plus-days.db.firebase
   (:require [com.degel.re-frame-firebase :as firebase]
             [re-frame.core :as re-frame]
             [re-frame.loggers :refer [console]]
             [iron.re-utils :as re-utils :refer [sub2 <sub >evt]]
             [iron.utils :refer [ci-includes? validate]]
-            [plus_days.db.specs :as specs]))
+            [plus-days.db.specs :as specs]))
 
 
 (comment Need spec for db schema)

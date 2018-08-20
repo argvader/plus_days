@@ -1,7 +1,7 @@
-(ns plus_days.calendar.styles
+(ns plus-days.calendar.styles
   (:require [cljs-css-modules.macro :refer-macros [defstyle]]
-            [plus_days.palette :as palette]
-            [plus_days.constants :refer [css-vendors]]))
+            [plus-days.palette :as palette]
+            [plus-days.constants :refer [css-vendors]]))
 
 (defstyle style css-vendors
   [".container"

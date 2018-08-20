@@ -1,4 +1,4 @@
-(ns plus_days.calendar.subscriptions
+(ns plus-days.calendar.subscriptions
   (:require [re-frame.core :as re-frame :refer [reg-sub subscribe]]
             [com.degel.re-frame-firebase.core :as core]))
 

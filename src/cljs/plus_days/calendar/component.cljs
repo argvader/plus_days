@@ -1,9 +1,9 @@
-(ns plus_days.calendar.component
-  (:require [plus_days.calendar.styles :refer [style]]
-            [plus_days.calendar.events]
-            [plus_days.calendar.subscriptions]
-            [plus_days.calendar.header.component :as header]
-            [plus_days.calendar.utils :refer [today? date->key offset-start-day]]
+(ns plus-days.calendar.component
+  (:require [plus-days.calendar.styles :refer [style]]
+            [plus-days.calendar.events]
+            [plus-days.calendar.subscriptions]
+            [plus-days.calendar.header.component :as header]
+            [plus-days.calendar.utils :refer [today? date->key offset-start-day]]
             [cljs-time.core :as time]
             [reagent.core :as r]
             [re-frame.core :as re-frame :refer [subscribe dispatch]]))
@@ -23,7 +23,7 @@
 (defn- handle-drop [event date calendar-tasks]
   (.preventDefault event)
   (let [task-id (.getData (.-dataTransfer event) "application/x-task")]
-    (dispatch [:plus_days.calendar.events/completed-task  calendar-tasks date task-id])))
+    (dispatch [:plus-days.calendar.events/completed-task  calendar-tasks date task-id])))
 
 (defn- count-completed-tasks [calendar-tasks date]
   (let [date-key (date->key date)]
@@ -50,8 +50,8 @@
                [:td {:key (str (random-uuid))} ""]))])]])
 
 (defn component[]
-  (let [current-month (subscribe [:plus_days.calendar.subscriptions/current-month])
-        calendar-tasks (subscribe [:plus_days.calendar.subscriptions/calendar-tasks])]
+  (let [current-month (subscribe [:plus-days.calendar.subscriptions/current-month])
+        calendar-tasks (subscribe [:plus-days.calendar.subscriptions/calendar-tasks])]
      (fn []
       [:div {:class-name (:container style)}
          (header/component @current-month)

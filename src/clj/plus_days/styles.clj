@@ -1,10 +1,10 @@
-(ns plus_days.styles
+(ns plus-days.styles
   (:require [garden.def :refer [defrule defstyles]]
             [garden.stylesheet :refer [rule]]
-            [plus_days.palette :as palette]
-            [plus_days.layout :as layout]
-            [plus_days.resets :as resets]
-            [plus_days.typography :as typography]))
+            [plus-days.palette :as palette]
+            [plus-days.layout :as layout]
+            [plus-days.resets :as resets]
+            [plus-days.typography :as typography]))
 
 (defrule html)
 (defrule body)

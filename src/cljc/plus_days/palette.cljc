@@ -1,4 +1,4 @@
-(ns plus_days.palette
+(ns plus-days.palette
        (:require [garden.color :refer [rgb lighten darken]]))
 
 (defn shade [color direction step]

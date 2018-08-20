@@ -1,11 +1,11 @@
-(ns plus_days.app
+(ns plus-days.app
   (:require [reagent.core :as reagent :refer [atom]]
             [re-frame.core :as re-frame]
-            [plus_days.db.firebase :as fb]
-            [plus_days.events]
-            [plus_days.epoch.component :as epoch]
-            [plus_days.tasks.component :as tasks]
-            [plus_days.calendar.component :as calendar]))
+            [plus-days.db.firebase :as fb]
+            [plus-days.events]
+            [plus-days.epoch.component :as epoch]
+            [plus-days.tasks.component :as tasks]
+            [plus-days.calendar.component :as calendar]))
 
 (defn plus-days []
   [:div {:class-name "grid"}

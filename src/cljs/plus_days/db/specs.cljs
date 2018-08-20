@@ -1,4 +1,4 @@
-(ns plus_days.db.specs
+(ns plus-days.db.specs
   (:require [clojure.spec.alpha :as s]))
 
 (s/def ::uid string?)

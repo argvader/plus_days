@@ -1,4 +1,4 @@
-(ns plus_days.epoch.visualization.utils
+(ns plus-days.epoch.visualization.utils
   (:require [cljsjs.d3]))
 
 (defn attrs [el m]

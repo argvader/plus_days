@@ -1,4 +1,4 @@
-(ns plus_days.layout
+(ns plus-days.layout
   (:require [garden.def :refer [defrule defstyles]]
             [garden.stylesheet :refer [rule at-media]]))
 

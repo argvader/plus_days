@@ -1,8 +1,12 @@
-(ns plus_days.epoch.subscriptions
-  (:require [re-frame.core :as re-frame :refer [reg-sub]]
-            [com.degel.re-frame-firebase.core :as core]))
+(ns plus-days.epoch.subscriptions
+  (:require-macros [reagent.ratom :refer [reaction]])
+  (:require [re-frame.core :as re-frame :refer [reg-sub, subscribe]]
+            [com.degel.re-frame-firebase.core :as core]
+            [plus-days.constants :as constants :refer [window-size]]))
 
 (reg-sub
   ::window-size
-  (fn [db _]
-    (:window-size db)))
+  (fn [_]
+     @window-size)
+  (fn [size]
+    size))

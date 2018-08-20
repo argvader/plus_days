@@ -1,4 +1,4 @@
-(ns plus_days.calendar.utils
+(ns plus-days.calendar.utils
   (:require   [cljs-time.core :as time]
               [cljs-time.coerce :as coerce]))
 

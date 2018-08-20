@@ -1,4 +1,4 @@
-(ns plus_days.macros
+(ns plus-days.macros
   (:require [garden.types #?@(:cljs [:refer [CSSFunction CSSAtRule]])]
             [garden.util :as util]
             [garden.core]

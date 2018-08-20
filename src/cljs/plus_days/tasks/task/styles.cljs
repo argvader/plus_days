@@ -1,8 +1,8 @@
-(ns plus_days.tasks.task.styles
+(ns plus-days.tasks.task.styles
   (:require [cljs-css-modules.macro :refer-macros [defstyle]]
             [garden.color :refer [as-hex]]
-            [plus_days.palette :as palette]
-            [plus_days.constants :refer [css-vendors]]))
+            [plus-days.palette :as palette]
+            [plus-days.constants :refer [css-vendors]]))
 
 (defstyle style css-vendors
   [".task"

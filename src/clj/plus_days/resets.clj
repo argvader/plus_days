@@ -1,4 +1,4 @@
-(ns plus_days.resets
+(ns plus-days.resets
   (:require [garden.core :refer [css]]))
 
 (defn clearfix [cls]

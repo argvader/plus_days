@@ -48,7 +48,7 @@
    to change parameters (like optimizations level of the cljs compiler)"
   []
   (comp (cljs)
-        (garden :styles-var 'plus_days.styles/screen
+        (garden :styles-var 'plus-days.styles/screen
                 :vendors ["webkit"]
                 :auto-prefix #{:mask}
                 :output-to "css/styles.css")))
@@ -71,9 +71,12 @@
   identity)
 
 (deftask development []
-  (task-options! cljs {:optimizations :none}
+  (task-options! cljs {:optimizations :none
+                       :compiler-options {
+                                           :preloads ['day8.re-frame-10x.preload]
+                                           :closure-defines  {"re_frame.trace.trace_enabled_QMARK_" true}}}
                  cljs-repl {:nrepl-opts {:middleware ['cemerick.piggieback/wrap-cljs-repl]}}
-                 reload {:on-jsload 'plus_days.app/init})
+                 reload {:on-jsload 'plus-days.app/init})
   identity)
 
 (deftask dev

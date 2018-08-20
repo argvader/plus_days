@@ -1,5 +1,5 @@
-(ns plus_days.tasks.task.component
-  (:require [plus_days.tasks.task.styles :refer [style]]
+(ns plus-days.tasks.task.component
+  (:require [plus-days.tasks.task.styles :refer [style]]
             [reagent.core :as r]))
 
 (defn handle-drag-start [event task-id]

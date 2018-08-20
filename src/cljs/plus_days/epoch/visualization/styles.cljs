@@ -1,8 +1,8 @@
-(ns plus_days.epoch.visualization.styles
+(ns plus-days.epoch.visualization.styles
   (:require [cljs-css-modules.macro :refer-macros [defstyle]]
-            [plus_days.palette :as palette]
+            [plus-days.palette :as palette]
             [garden.color :refer [as-hex]]
-            [plus_days.constants :refer [css-vendors]]))
+            [plus-days.constants :refer [css-vendors]]))
 
 (defstyle barChart css-vendors
   [".bar" {:fill palette/pale-yellow}])
