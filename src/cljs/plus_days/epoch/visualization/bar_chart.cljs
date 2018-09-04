@@ -31,7 +31,7 @@
       {:display-name "epoch"
        :component-did-mount #(draw-graph (js/d3.select @!ref) data)
        :reagent-render
-         (fn []
+         (fn [height width data]
             [:svg {:ref (fn [node] (reset! !ref node))
-                   :width height
-                   :height width}])})))
+                   :width width
+                   :height height}])})))

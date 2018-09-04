@@ -3,10 +3,3 @@
   (:require [re-frame.core :as re-frame :refer [reg-sub, subscribe]]
             [com.degel.re-frame-firebase.core :as core]
             [plus-days.constants :as constants :refer [window-size]]))
-
-(reg-sub
-  ::window-size
-  (fn [_]
-     @window-size)
-  (fn [size]
-    size))
